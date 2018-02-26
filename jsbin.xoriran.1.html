@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by LaviniuVidican (http://jsbin.com/xoriran/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="JS Color Clock">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Color Clock</title>
+  <link href="https://fonts.googleapis.com/css?family=Exo+2:100" rel="stylesheet" type="text/css">
+<style id="jsbin-css">
+*{
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  /*bottom: -50%;*/
+  font-family: 'Exo 2', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  transform: translateY(-1.5rem);
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+    <button onclick="myStartFunction()">Start time</button>
+  <button onclick="myStopFunction()">Stop time</button>
+<script id="jsbin-javascript">
+function colorClock() {
+  var date = new Date();
+  //console.log(date);
+  var hours = date.getHours();
+  if (hours < 10) {
+    hours = '0' + hours;
+  }
+  //console.log(hours);
+  var minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  var seconds = date.getSeconds();
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+  //console.log(minutes + ':' +seconds);
+  //console.log(hours + ':' + minutes + ':' + seconds);
+  var clockFace = hours + ':' + minutes + ':' + seconds;
+  //console.log(clockFace);
+  //return hours + ':' + minutes + ':' + seconds;
+  document.getElementById('clock').innerHTML = clockFace;
+  //setTimeout(function() {
+  //  colorClock();
+  //}, 1000);
+  //document.body.style.background = 'red';
+  var hexColor = '#' + hours + minutes + seconds;
+  document.body.style.background = hexColor;
+}
+var xI;
+//document.getElementById('clock').innerHTML = colorClock();
+//colorClock();
+//setTimeOut(function(){
+//  colorClock();
+//},1000);
+//var xI = setInterval(function(){
+//  colorClock();
+//},1000);
+function myStartFunction(){
+  xI = setInterval(function(){
+    colorClock();
+  },1000);
+}
+function myStopFunction() {
+    clearInterval(xI);
+}
+
+
+
+</script>
+</body>
+</html>
